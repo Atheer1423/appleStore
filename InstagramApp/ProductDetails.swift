@@ -16,14 +16,16 @@ class ProductDetails: UIViewController {
     @IBOutlet weak var productColor: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productImage: UIImageView!
+   
     var product : product?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      
       setUp()
     }
     
    func setUp(){
+       print(UserDefaults.standard.value(forKey: "email"))
        if let Product = product {
            containerView.layer.cornerRadius = containerView.frame.width/15
            containerView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
@@ -45,9 +47,26 @@ class ProductDetails: UIViewController {
     @IBAction func addToBasketBtn(_ sender: UIButton) {
         
     }
+    @IBAction func addToFavourites(_ sender: UIButton) {
+        // get email from sign in and signup -safe email before add to db-userdef
+        
+        // get product obj sent 2 to database add to fav
+      
+        DatabaseManager.shared.addToFavourites(product!, "Atheersalalha@hotmail.com") { success in
+            
+            if success {
+                
+            } else{
+                
+            }
+            
+            
+        }
+    }
     /*
     // MARK: - Navigation
-
+    
+     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

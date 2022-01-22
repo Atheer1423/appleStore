@@ -22,6 +22,8 @@
 		C3B61F14279B1E27008FE11A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B61F13279B1E26008FE11A /* DatabaseManager.swift */; };
 		C3B61F1C279B2EDD008FE11A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3B61F1B279B2EDD008FE11A /* GoogleService-Info.plist */; };
 		C3B61F1E279C4FBE008FE11A /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B61F1D279C4FBE008FE11A /* ProductDetails.swift */; };
+		C3B61F20279C8E7F008FE11A /* FavouritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B61F1F279C8E7F008FE11A /* FavouritesVC.swift */; };
+		C3B61F24279C9391008FE11A /* FavouritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B61F23279C9391008FE11A /* FavouritesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		C3B61F13279B1E26008FE11A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		C3B61F1B279B2EDD008FE11A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C3B61F1D279C4FBE008FE11A /* ProductDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetails.swift; sourceTree = "<group>"; };
+		C3B61F1F279C8E7F008FE11A /* FavouritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesVC.swift; sourceTree = "<group>"; };
+		C3B61F23279C9391008FE11A /* FavouritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 				C3B61EF5279AF881008FE11A /* ViewController.swift */,
 				C3B61F0E279B16E4008FE11A /* CollectionViewCell.swift */,
 				C3B61F13279B1E26008FE11A /* DatabaseManager.swift */,
+				C3B61F1F279C8E7F008FE11A /* FavouritesVC.swift */,
+				C3B61F23279C9391008FE11A /* FavouritesCell.swift */,
 				C3B61F1D279C4FBE008FE11A /* ProductDetails.swift */,
 				C3B61EF7279AF881008FE11A /* Main.storyboard */,
 				C3B61EFA279AF882008FE11A /* Assets.xcassets */,
@@ -176,8 +182,10 @@
 				C3B61EF2279AF881008FE11A /* AppDelegate.swift in Sources */,
 				C3B61F14279B1E27008FE11A /* DatabaseManager.swift in Sources */,
 				C3B61F0F279B16E4008FE11A /* CollectionViewCell.swift in Sources */,
+				C3B61F20279C8E7F008FE11A /* FavouritesVC.swift in Sources */,
 				C3B61F1E279C4FBE008FE11A /* ProductDetails.swift in Sources */,
 				C3B61EF4279AF881008FE11A /* SceneDelegate.swift in Sources */,
+				C3B61F24279C9391008FE11A /* FavouritesCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

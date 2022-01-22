@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 class ViewController: UIViewController {
     var products :[product] = []
-   
+  
  
     @IBOutlet weak var collectionOutlet: UICollectionView!
     override func viewDidLoad() {
@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func TabletsPressed(_ sender: UIButton) {
+        UserDefaults.standard.set("jfhgjfkdkskf", forKey: "email")
+        print( UserDefaults.standard.value(forKey: "email"))
         products = []
         collectionOutlet.reloadData()
         DatabaseManager.shared.getProducts(type: "Tablets") { [weak self] result in
