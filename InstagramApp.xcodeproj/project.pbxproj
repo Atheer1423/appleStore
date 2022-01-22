@@ -21,6 +21,7 @@
 		C3B61F12279B1B6A008FE11A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C3B61F11279B1B6A008FE11A /* Kingfisher */; };
 		C3B61F14279B1E27008FE11A /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B61F13279B1E26008FE11A /* DatabaseManager.swift */; };
 		C3B61F1C279B2EDD008FE11A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C3B61F1B279B2EDD008FE11A /* GoogleService-Info.plist */; };
+		C3B61F1E279C4FBE008FE11A /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B61F1D279C4FBE008FE11A /* ProductDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		C3B61F0E279B16E4008FE11A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		C3B61F13279B1E26008FE11A /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		C3B61F1B279B2EDD008FE11A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C3B61F1D279C4FBE008FE11A /* ProductDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				C3B61EF5279AF881008FE11A /* ViewController.swift */,
 				C3B61F0E279B16E4008FE11A /* CollectionViewCell.swift */,
 				C3B61F13279B1E26008FE11A /* DatabaseManager.swift */,
+				C3B61F1D279C4FBE008FE11A /* ProductDetails.swift */,
 				C3B61EF7279AF881008FE11A /* Main.storyboard */,
 				C3B61EFA279AF882008FE11A /* Assets.xcassets */,
 				C3B61EFC279AF882008FE11A /* LaunchScreen.storyboard */,
@@ -173,6 +176,7 @@
 				C3B61EF2279AF881008FE11A /* AppDelegate.swift in Sources */,
 				C3B61F14279B1E27008FE11A /* DatabaseManager.swift in Sources */,
 				C3B61F0F279B16E4008FE11A /* CollectionViewCell.swift in Sources */,
+				C3B61F1E279C4FBE008FE11A /* ProductDetails.swift in Sources */,
 				C3B61EF4279AF881008FE11A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,10 +10,12 @@ import Kingfisher
 class ViewController: UIViewController {
     var products :[product] = []
    
+ 
     @IBOutlet weak var collectionOutlet: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+      
+       
     }
 
     @IBAction func TabletsPressed(_ sender: UIButton) {
@@ -99,11 +101,23 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let product = products[indexPath.row]
         cell.deviceImage.kf.setImage(with: URL(string: product.image))
         cell.containerView.layer.cornerRadius = cell.containerView.frame.width/10
-        cell.deviceImage.layer.masksToBounds = true
+     
+        cell.deviceImage.backgroundColor = UIColor.clear
+        cell.deviceImage.isOpaque = false
+       
         cell.phoneName.text = product.name
         cell.phonePrice.text = product.price
         cell.phoneColor.text = product.color
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      
+        let product  = products[indexPath.row]
+        let productDetailsVC = storyboard?.instantiateViewController(withIdentifier: "productDetails") as! ProductDetails
+        productDetailsVC.product = product
+        productDetailsVC.modalPresentationStyle = .fullScreen
+        present(productDetailsVC, animated: true, completion: nil)
     }
     
     
