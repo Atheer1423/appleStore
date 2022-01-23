@@ -90,6 +90,7 @@ struct product {
     var name: String
     var color: String
     var price: String
+    var id: String
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {

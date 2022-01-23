@@ -34,10 +34,11 @@ extension DatabaseManager {
                guard let name = dic["name"] as? String,
                 let color = dic["color"] as? String,
                 let price = dic["price"] as? String,
+                     let id = dic["id"] as? String ,
                 let imageUrl = dic["imageUrl"] as? String else{
                     return nil
                 }
-                return product(image: imageUrl, name: name, color: color, price: price)
+                return product(image: imageUrl, name: name, color: color, price: price, id: id)
                 
             }
             )
@@ -59,10 +60,11 @@ extension DatabaseManager {
                guard let name = productDic["name"] as? String ,
                    let price = productDic["price"] as? String ,
                    let color = productDic["color"] as? String ,
+                    let id = productDic["id"] as? String ,
                    let imageUrl = productDic["imageUrl"] as? String else {
                    return nil
                }
-                return product(image: imageUrl, name: name, color: color, price: price)
+                return product(image: imageUrl, name: name, color: color, price: price , id: id)
             })
             completion(.success(productsFav))
         }
@@ -78,7 +80,8 @@ extension DatabaseManager {
                     "name" : product.name,
                     "price" : product.price,
                     "imageUrl" : product.image,
-                    "color" : product.color
+                    "color" : product.color,
+                    "id" : product.id
                 ]
                 value.append(newProduct)
                 self?.database.child("\(SafeEmail)").setValue(value, withCompletionBlock: { error, _ in
@@ -100,7 +103,8 @@ extension DatabaseManager {
                     "name" : product.name,
                     "price" : product.price,
                     "imageUrl" : product.image,
-                    "color" : product.color
+                    "color" : product.color,
+                    "id" : product.id
                 ]
                 ]
                 self?.database.child("\(SafeEmail)").setValue(newProduct, withCompletionBlock: { error, _ in
@@ -117,6 +121,38 @@ extension DatabaseManager {
             }
         }
     }
+    
+    public func deleteProduct(id : String, completion: @escaping (_ success : Bool) -> Void) {
+        let SafeEmail = safeEmail(email: "Atheersalalha@hotmail.com")
+        database.child("\(SafeEmail)").observe(.value) { snapshot in
+            guard var value  = snapshot.value as? [[String:Any]] else {
+                print(DatabaseError.failedToFetch)
+                completion(false)
+                return
+            }
+            var index = 0
+            value.forEach { dic in
+               let productId =  dic["id"] as? String
+                if  productId == id {
+                    value.remove(at: index)
+                    self.database.child("\(SafeEmail)").setValue(value, withCompletionBlock: { error, _ in
+                        
+                        if let error = error {
+                            print(error.localizedDescription)
+                            completion(false)
+                            return
+                        }else{
+                            completion(true)
+                        }
+                    })
+                }else{
+                    index+=1
+                }
+            }
+        }
+
+    }
+    
     
 }
 

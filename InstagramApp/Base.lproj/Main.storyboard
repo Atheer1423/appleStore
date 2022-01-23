@@ -422,6 +422,7 @@
                                                 <constraint firstItem="xmL-ck-Y6L" firstAttribute="width" secondItem="gp2-Z6-L70" secondAttribute="width" multiplier="0.35" id="MGC-0R-uyf"/>
                                                 <constraint firstItem="yP7-BI-tB4" firstAttribute="centerY" secondItem="gp2-Z6-L70" secondAttribute="centerY" id="OLw-Ip-vqV"/>
                                                 <constraint firstItem="yP7-BI-tB4" firstAttribute="leading" secondItem="xmL-ck-Y6L" secondAttribute="trailing" constant="20" id="nZi-3E-7XQ"/>
+                                                <constraint firstItem="yP7-BI-tB4" firstAttribute="top" secondItem="gp2-Z6-L70" secondAttribute="top" constant="33" id="qcf-zo-tna"/>
                                                 <constraint firstItem="yP7-BI-tB4" firstAttribute="width" secondItem="gp2-Z6-L70" secondAttribute="width" multiplier="0.5" id="vrT-Vq-l72"/>
                                             </constraints>
                                         </tableViewCellContentView>
