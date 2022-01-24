@@ -29,6 +29,8 @@ extension DatabaseManager {
                 completion(.failure(DatabaseError.failedToFetch))
                 return
             }
+            
+           
             let products: [product] = value.compactMap( { dic in
                 
                guard let name = dic["name"] as? String,
@@ -104,7 +106,7 @@ extension DatabaseManager {
     
     public func addProductToBasket(_ product:product , _ email:String, completion: @escaping (_ success:Bool)-> Void){
         let SafeEmail = safeEmail(email: email)
-            database.child("\(SafeEmail)/basket").observeSingleEvent(of: .value) {[weak self] snapshot in
+        database.child("\(SafeEmail)/basket").observeSingleEvent( of:.value) {[weak self] snapshot in
                 if var value = snapshot.value  as? [[String: Any]]{
                     let newProduct =
                     [
@@ -206,9 +208,9 @@ extension DatabaseManager {
         }
     }
     
-    public func deleteProduct(id : String, completion: @escaping (_ success : Bool) -> Void) {
+    public func deleteProduct(id : String, _ section: String , completion: @escaping (_ success : Bool) -> Void) {
         let SafeEmail = safeEmail(email: "Atheersalalha@hotmail.com")
-        database.child("\(SafeEmail)/Fav").observe(.value) { snapshot in
+        database.child("\(SafeEmail)/\(section)").observe(.value) { snapshot in
             guard var value  = snapshot.value as? [[String:Any]] else {
                 print(DatabaseError.failedToFetch)
                 completion(false)
@@ -219,7 +221,7 @@ extension DatabaseManager {
                let productId =  dic["id"] as? String
                 if  productId == id {
                     value.remove(at: index)
-                    self.database.child("\(SafeEmail)/Fav").setValue(value, withCompletionBlock: { error, _ in
+                    self.database.child("\(SafeEmail)/\(section)").setValue(value, withCompletionBlock: { error, _ in
                         
                         if let error = error {
                             print(error.localizedDescription)

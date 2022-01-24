@@ -7,16 +7,33 @@
 
 import UIKit
 import Kingfisher
-class BasketVC: UIViewController {
+
+protocol SendQuantityProtocol {
+    func sendQuantity(price:Int)
+}
+
+class BasketVC: UIViewController , SendQuantityProtocol {
+  
     var basProduct : [product] = []
   
+    @IBOutlet weak var totalOutlet: UILabel!
+    @IBOutlet weak var btn: UIButton!
     @IBOutlet weak var tableViewOutlet: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        btn.layer.cornerRadius = btn.frame.width/17
         getbasketProduct()
+     
     }
-    
+    func getTotal (){
+      var total = 0
+        for product in basProduct {
+            let price = product.price.replacingOccurrences(of: "$", with: " ")
+            total =  total + (price as NSString).integerValue
+        }
+        totalOutlet.text = "\(total) $"
+    }
     func getbasketProduct(){
         DatabaseManager.shared.getBasketProducts("Atheersalalha@hotmail.com") { [weak self] result in
             switch result {
@@ -25,13 +42,22 @@ class BasketVC: UIViewController {
                   
                     self?.basProduct = products
                     self?.tableViewOutlet.reloadData()
+                    self?.getTotal()
                 }
             case .failure(let error):
                 print(error)
             }
         }
     }
- 
+    
+    func sendQuantity(price: Int) {
+        if let CurrentTotal = totalOutlet.text?.replacingOccurrences(of: "$", with: " "){
+        let currentTotal = ( CurrentTotal as NSString).integerValue
+        let newTotal = currentTotal + price
+            totalOutlet.text = "\(newTotal)$"
+            
+    }
+}
 }
 
 extension BasketVC : UITableViewDataSource, UITableViewDelegate{
@@ -47,9 +73,22 @@ extension BasketVC : UITableViewDataSource, UITableViewDelegate{
         cell.productPrice.text = basProduct[indexPath.row].price
         cell.productQuantity.text = basProduct[indexPath.row].quantity!
         cell.id = basProduct[indexPath.row].id
+        cell.price = basProduct[indexPath.row].price
+        cell.delegate = self
       return cell
         
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let id = basProduct[indexPath.row].id
+        basProduct.remove(at: indexPath.row)
+        
+     
+        DatabaseManager.shared.deleteProduct(id:id, "basket") { success in
+
+        }
+    }
+    
     
 
     

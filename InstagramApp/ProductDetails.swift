@@ -35,6 +35,14 @@ class ProductDetails: UIViewController {
            productImage.layer.masksToBounds = true
          
            productImage.kf.setImage(with:URL(string: Product.image))
+//           if let url = URL(string:Product.image){
+//          if let data = try? Data(contentsOf : url){
+//              if let image = UIImage(data:data){
+//                  productImage.image = image
+//
+//              }
+//           }
+//           }
            productName.text = Product.name
            productColor.text = Product.color
            pruductPrice.text = Product.price

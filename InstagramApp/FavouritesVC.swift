@@ -56,7 +56,7 @@ extension FavouritesVC  : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let id = favProducts[indexPath.row].id
-        DatabaseManager.shared.deleteProduct(id:id) { success in
+        DatabaseManager.shared.deleteProduct(id:id, "Fav") { success in
             
         }
     }

@@ -74,9 +74,9 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qo4-80-efl">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qo4-80-efl">
                                 <rect key="frame" x="20" y="333" width="374" height="480"/>
-                                <color key="backgroundColor" red="0.89175257730000002" green="0.89175257730000002" blue="0.89175257730000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.92933040860000005" green="0.92946392300000003" blue="0.92930108310000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="5" id="p0c-RY-hd2">
                                     <size key="itemSize" width="200" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -163,7 +163,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.89175257731958757" green="0.89175257731958757" blue="0.89175257731958757" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.92783505154639179" green="0.92783505154639179" blue="0.92783505154639179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="PMR-8q-v60" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="1OI-yD-YBF"/>
                             <constraint firstItem="i34-Dm-GbP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3wd-nN-16D"/>
@@ -605,7 +605,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1599$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHx-SQ-4qc">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHx-SQ-4qc">
                                                 <rect key="frame" x="177" y="0.0" width="177" height="53.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="0.3039404154" green="0.1369121969" blue="0.5715034604" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -642,12 +642,41 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="cart" catalog="system" selectedImage="cart.fill" id="5uK-61-Tyw"/>
                     <connections>
+                        <outlet property="btn" destination="Gda-LX-qA8" id="Ul7-ac-yTu"/>
                         <outlet property="tableViewOutlet" destination="yIc-ut-IDs" id="w3N-Zj-Usz"/>
+                        <outlet property="totalOutlet" destination="QHx-SQ-4qc" id="Iug-s9-hQO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0sf-ps-gBA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1854" y="780"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hoh-h0-35t">
+            <objects>
+                <viewController id="11v-OA-c0C" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cQ6-Rd-xf4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qoo-FY-O8f">
+                                <rect key="frame" x="0.0" y="234" width="414" height="662"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="13g-FX-VGx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="qoo-FY-O8f" secondAttribute="bottom" id="13f-cY-FNp"/>
+                            <constraint firstItem="qoo-FY-O8f" firstAttribute="top" secondItem="13g-FX-VGx" secondAttribute="top" constant="190" id="nbh-kD-k3F"/>
+                            <constraint firstItem="qoo-FY-O8f" firstAttribute="leading" secondItem="13g-FX-VGx" secondAttribute="leading" id="pmc-X1-lsT"/>
+                            <constraint firstItem="13g-FX-VGx" firstAttribute="trailing" secondItem="qoo-FY-O8f" secondAttribute="trailing" id="v7z-ij-857"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aeb-J4-tIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2721.739130434783" y="1158.4821428571429"/>
         </scene>
     </scenes>
     <resources>
