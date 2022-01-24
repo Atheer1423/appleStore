@@ -481,8 +481,22 @@
                     <view key="view" contentMode="scaleToFill" id="XqA-9I-cAt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8K-ec-Qgo">
+                                <rect key="frame" x="319" y="134" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6uX-yd-MGj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6uX-yd-MGj" firstAttribute="bottom" secondItem="g8K-ec-Qgo" secondAttribute="bottom" constant="658" id="0ay-qb-SaK"/>
+                            <constraint firstItem="g8K-ec-Qgo" firstAttribute="leading" secondItem="6uX-yd-MGj" secondAttribute="leading" constant="319" id="2Pm-OX-XhJ"/>
+                            <constraint firstItem="6uX-yd-MGj" firstAttribute="trailing" secondItem="g8K-ec-Qgo" secondAttribute="trailing" constant="53" id="hl3-aS-3ce"/>
+                            <constraint firstItem="g8K-ec-Qgo" firstAttribute="top" secondItem="6uX-yd-MGj" secondAttribute="top" constant="90" id="keR-Fj-S2x"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="person" catalog="system" selectedImage="person.fill" id="BA7-kX-X3w"/>
                 </viewController>
