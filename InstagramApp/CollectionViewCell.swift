@@ -15,6 +15,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var phoneName: UILabel!
     @IBOutlet weak var containerView: UIView!
     
+    @IBOutlet weak var view: UIView!
     
    
     

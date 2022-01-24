@@ -45,6 +45,16 @@ class ProductDetails: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func addToBasketBtn(_ sender: UIButton) {
+        DatabaseManager.shared.addProductToBasket(product!, "Atheersalalha@hotmail.com") { success in
+            
+            if success {
+                
+            } else{
+                
+            }
+            
+            
+        }
         
     }
     @IBAction func addToFavourites(_ sender: UIButton) {

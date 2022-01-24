@@ -91,6 +91,7 @@ struct product {
     var color: String
     var price: String
     var id: String
+    var quantity : String?
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -103,11 +104,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
        
         let product = products[indexPath.row]
         cell.deviceImage.kf.setImage(with: URL(string: product.image))
-        cell.containerView.layer.cornerRadius = cell.containerView.frame.width/10
-     
-        cell.deviceImage.backgroundColor = UIColor.clear
-        cell.deviceImage.isOpaque = false
-       
+        cell.containerView.layer.cornerRadius = cell.containerView.frame.width/14
+        cell.view.layer.cornerRadius = cell.containerView.frame.width/14
+
+        cell.view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         cell.phoneName.text = product.name
         cell.phonePrice.text = product.price
         cell.phoneColor.text = product.color
