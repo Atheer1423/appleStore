@@ -22,9 +22,7 @@ class basketCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        if let quantity = productQuantity.text {
-            stepperOutlet.value = Double(Int(String(quantity)) ?? 0)
-        }
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -34,25 +32,46 @@ class basketCell: UITableViewCell {
     }
 
     @IBAction func stepperPressed(_ sender: UIStepper) {
-      
+        let oldprice = productPrice.text?.replacingOccurrences(of: "$", with: " ")
+        let Oldprice = ( oldprice! as NSString).integerValue
+        let OldQ = (productQuantity.text! as NSString ).integerValue
         productQuantity.text = "\(Int(stepperOutlet.value))"
         if let Price = price?.replacingOccurrences(of: "$", with: " "){
-        print(Price)
+       var sum = true
           
         let PriceInt = ( Price as NSString).integerValue
-            print(PriceInt)
+          
         if let q =  productQuantity.text {
-    print(q)
-            let totalPrice =  ( q as NSString).integerValue * PriceInt
-            print( ( q as NSString).integerValue)
-            print("totalproduct \(totalPrice)")
-            productPrice.text = "\(totalPrice) $"
-            delegate?.sendQuantity(price: totalPrice)
-            DatabaseManager.shared.editQuantity(id!,"Atheersalalha@hotmail.com",q ) { success in
+            print("quan")
+           let IntQ = ( q as NSString).integerValue
+            if IntQ > OldQ {
+                sum = true
+                let totalPrice = IntQ * PriceInt
                 
+//                print( "int q \(IntQ)")
+//                print("totalproduct one \(totalPrice)")
+                let res = Oldprice + 400
+                productPrice.text = "\(res) $"
+                let newPrice = totalPrice - Oldprice
+                delegate?.sendQuantity(price: res,sum: sum)
+                DatabaseManager.shared.editQuantityAndPrice(id!,"Atheersalalha@hotmail.com",q , String(res)) { success in
+
+                }
+            }else{
+                sum = false
+                let totalPrice = IntQ * PriceInt
+                print( "int q \(IntQ)")
+                print("totalproduct one \(totalPrice)")
+                let res = Oldprice - 400
+                productPrice.text = "\(res) $"
+                let newPrice = totalPrice - Oldprice
+                delegate?.sendQuantity(price: res, sum: sum )
+            DatabaseManager.shared.editQuantityAndPrice(id!,"Atheersalalha@hotmail.com",q , String(res)) { success in
+
             }
         }
         }
-        // add quant
+      
     }
+}
 }

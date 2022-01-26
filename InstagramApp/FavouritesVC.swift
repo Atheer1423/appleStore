@@ -34,6 +34,8 @@ class FavouritesVC : UIViewController {
         }
     }
     
+    
+    
   
 
 }
@@ -49,6 +51,7 @@ extension FavouritesVC  : UITableViewDataSource, UITableViewDelegate{
         cell.imageProduct.kf.setImage(with: URL(string:oneProduct.image))
         cell.nameProduct.text = oneProduct.name
         cell.priceProduct.text = oneProduct.price
+        cell.product = oneProduct
         cell.colorProduct.text = oneProduct.color
         
         return cell
@@ -59,6 +62,14 @@ extension FavouritesVC  : UITableViewDataSource, UITableViewDelegate{
         DatabaseManager.shared.deleteProduct(id:id, "Fav") { success in
             
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let product  = favProducts[indexPath.row]
+        let productDetailsVC = storyboard?.instantiateViewController(withIdentifier: "productDetails") as! ProductDetails
+        productDetailsVC.product = product
+        productDetailsVC.modalPresentationStyle = .fullScreen
+        present(productDetailsVC, animated: true, completion: nil)
     }
     
     

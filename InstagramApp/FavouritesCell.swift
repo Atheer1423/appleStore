@@ -10,7 +10,7 @@ import UIKit
 class FavouritesCell: UITableViewCell {
 
     @IBOutlet weak var imageProduct: UIImageView!
-    
+    var product : product?
     @IBOutlet weak var priceProduct: UILabel!
     @IBOutlet weak var colorProduct: UILabel!
     @IBOutlet weak var nameProduct: UILabel!
@@ -20,8 +20,20 @@ class FavouritesCell: UITableViewCell {
     }
 
     @IBAction func addToBascketBtn(_ sender: UIButton) {
-        
+       
+            DatabaseManager.shared.addProductToBasket(product!, "Atheersalalha@hotmail.com") { success in
+                
+                if success {
+                    
+                } else{
+                    
+                }
+                
+                
+            }
+
     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

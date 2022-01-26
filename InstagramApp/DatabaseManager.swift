@@ -241,7 +241,7 @@ extension DatabaseManager {
 
     }
     
-    public func editQuantity(_ id : String,_ email:String,_ quantity:String, completion: @escaping (_ success : Bool) -> Void) {
+    public func editQuantityAndPrice(_ id : String,_ email:String,_ quantity:String, _ price:String, completion: @escaping (_ success : Bool) -> Void) {
         let SafeEmail = safeEmail(email: email)
      
         database.child("\(SafeEmail)/basket").observeSingleEvent(of: .value) { snapshot in
@@ -251,14 +251,14 @@ extension DatabaseManager {
                 completion(false)
                 return
             }
-            print("g")
+          
             var index = 0
             value.forEach {  dic in
                let productId =  dic["id"] as? String
                 if  productId == id {
                     let updatedProduct = [
                     "name" : dic["name"] as? String ,
-                    "price" : dic["price"] as? String ,
+                    "price" : price ,
                     "color" : dic["color"] as? String ,
                     "id" : dic["id"] as? String ,
                     "imageUrl" : dic["imageUrl"] as? String ,
