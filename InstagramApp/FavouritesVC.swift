@@ -9,14 +9,21 @@ import UIKit
 import Kingfisher
 class FavouritesVC : UIViewController {
     var favProducts : [product] = []
-  
+    @IBOutlet weak var EmptyView: UIView!
     
+    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var tableViewOutlet: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//get all fav for person email
-        
+   
+        if favProducts.isEmpty{
+            tableViewOutlet.isHidden = true
+            EmptyView.isHidden = false
+        }else{
+            tableViewOutlet.isHidden = false
+            EmptyView.isHidden = true
         getFavourites()
+        }
     }
     
     func getFavourites(){

@@ -35,7 +35,7 @@ class ProductDetails: UIViewController {
            productImage.layer.masksToBounds = true
          
            productImage.kf.setImage(with:URL(string: Product.image))
-//           if let url = URL(string:Product.image){
+//           if let url = URL(string: "\(Product.image).png"){
 //          if let data = try? Data(contentsOf : url){
 //              if let image = UIImage(data:data){
 //                  productImage.image = image

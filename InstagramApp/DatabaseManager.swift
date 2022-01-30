@@ -208,6 +208,54 @@ extension DatabaseManager {
         }
     }
     
+    public func getAllProducts( completion: @escaping (_ produxts:[[String:Any]], _ produxts2:[[String:Any]],_ produxts3:[[String:Any]],_ produxts:[[String:Any]]) -> Void){
+        var v1 : [[String:Any]]?
+        var v2 : [[String:Any]]?
+                  var v3 : [[String:Any]]?
+                            var v4 : [[String:Any]]?
+        database.child("laptop").observe(.value, with: { snapshot in
+            guard let value = snapshot.value as? [[String:String]] else{
+              print("failed to get products")
+                return
+            }
+           v1 = value
+            v2 = value
+            v3 = value
+            v4 = value
+        })
+//            database.child("Tablets").observe(.value, with: { snapshot in
+//                guard let value1 = snapshot.value as? [[String:Any]] else{
+//                  print("failed to get products")
+//                    return
+//                }
+//                v2 = value1
+//            })
+//                database.child("Wearables").observe(.value, with: { snapshot in
+//                    guard let value2 = snapshot.value as? [[String:Any]] else{
+//                      print("failed to get products")
+//                        return
+//                    }
+//                    v3 = value2
+//
+//                })
+//                    database.child("phones").observe(.value, with: { snapshot in
+//                        guard let value3 = snapshot.value as? [[String:String]] else{
+//                          print("failed to get products")
+//                            return
+//                        }
+//                        v4 = value3
+//                    })
+        print(v4)
+             print( v2)
+        if let V = v1 ,  let Vt = v2 ,let Vth = v3, let Vf = v4 {
+              completion(V,Vt,Vth,Vf)
+        }
+            
+        }
+        
+
+    
+    
     public func deleteProduct(id : String, _ section: String , completion: @escaping (_ success : Bool) -> Void) {
         let SafeEmail = safeEmail(email: "Atheersalalha@hotmail.com")
         database.child("\(SafeEmail)/\(section)").observe(.value) { snapshot in

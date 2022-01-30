@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		413F524F27A377A8009477DA /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413F524E27A377A8009477DA /* SearchCell.swift */; };
 		4171B96627A189710017CF7D /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4171B96527A189700017CF7D /* OrderVC.swift */; };
 		4171B96827A189920017CF7D /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4171B96727A189920017CF7D /* OrderCell.swift */; };
 		C3B61EF2279AF881008FE11A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B61EF1279AF881008FE11A /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		413F524E27A377A8009477DA /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		4171B96527A189700017CF7D /* OrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVC.swift; sourceTree = "<group>"; };
 		4171B96727A189920017CF7D /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		C3B61EEE279AF881008FE11A /* InstagramApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +97,7 @@
 				C3B61F1F279C8E7F008FE11A /* FavouritesVC.swift */,
 				C3B61F23279C9391008FE11A /* FavouritesCell.swift */,
 				C3B61F25279E1C3B008FE11A /* BasketVC.swift */,
+				413F524E27A377A8009477DA /* SearchCell.swift */,
 				4171B96727A189920017CF7D /* OrderCell.swift */,
 				4171B96527A189700017CF7D /* OrderVC.swift */,
 				C3B61F1D279C4FBE008FE11A /* ProductDetails.swift */,
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				413F524F27A377A8009477DA /* SearchCell.swift in Sources */,
 				C3B61EF6279AF881008FE11A /* ViewController.swift in Sources */,
 				C3B61EF2279AF881008FE11A /* AppDelegate.swift in Sources */,
 				C3B61F14279B1E27008FE11A /* DatabaseManager.swift in Sources */,
