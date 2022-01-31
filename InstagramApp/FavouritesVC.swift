@@ -16,23 +16,33 @@ class FavouritesVC : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
    
-        if favProducts.isEmpty{
-            tableViewOutlet.isHidden = true
-            EmptyView.isHidden = false
-        }else{
-            tableViewOutlet.isHidden = false
-            EmptyView.isHidden = true
+//        if favProducts.isEmpty{
+//            tableViewOutlet.isHidden = true
+//            EmptyView.isHidden = false
+//        }else{
+//            tableViewOutlet.isHidden = false
+//            EmptyView.isHidden = true
+//
+//        }
         getFavourites()
-        }
+//        if favProducts.isEmpty{
+//            tableViewOutlet.isHidden = true
+//            EmptyView.isHidden = false
+//        }else{
+//            tableViewOutlet.isHidden = false
+//            EmptyView.isHidden = true
+//
+//        }
     }
     
     func getFavourites(){
-        
-        DatabaseManager.shared.getFavouritesProducts("Atheersalalha@hotmail.com"){ [weak self]results in
+       
+        DatabaseManager.shared.getFavouritesProducts("Atheersalalha@hotmail.com"){ [weak self] results in
+           print("in get")
             switch results {
             case .success(let products):
+                self?.favProducts = products
                 DispatchQueue.main.async {
-                    self?.favProducts = products
                     self?.tableViewOutlet.reloadData()
                 }
             case .failure(let error):
@@ -49,11 +59,20 @@ class FavouritesVC : UIViewController {
 
 extension FavouritesVC  : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        favProducts.count
+                if favProducts.count == 0 {
+                    tableViewOutlet.isHidden = true
+                    EmptyView.isHidden = false
+                }else{
+                    tableViewOutlet.isHidden = false
+                    EmptyView.isHidden = true
+        
+                }
+        return favProducts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favCell", for: indexPath) as! FavouritesCell
+       
         let oneProduct = favProducts[indexPath.row]
         cell.imageProduct.kf.setImage(with: URL(string:oneProduct.image))
         cell.nameProduct.text = oneProduct.name
@@ -65,10 +84,16 @@ extension FavouritesVC  : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+       
         let id = favProducts[indexPath.row].id
+        favProducts.remove(at: indexPath.row)
+        tableView.reloadData()
         DatabaseManager.shared.deleteProduct(id:id, "Fav") { success in
-            
+           
         }
+     
+  
+       
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

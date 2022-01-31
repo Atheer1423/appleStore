@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Apple logg" translatesAutoresizingMaskIntoConstraints="NO" id="DCa-6D-vDQ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgonline-com-ua-ReplaceColor-m3ZmVsVbIuiIC" translatesAutoresizingMaskIntoConstraints="NO" id="DCa-6D-vDQ">
                                 <rect key="frame" x="87" y="347" width="240" height="212"/>
                             </imageView>
                         </subviews>
@@ -36,7 +36,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Apple logg" width="722" height="630"/>
+        <image name="imgonline-com-ua-ReplaceColor-m3ZmVsVbIuiIC" width="722" height="630"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -7,21 +7,20 @@
 
 import UIKit
 import Kingfisher
-
+import JGProgressHUD
 protocol SendQuantityProtocol {
     func sendQuantity(price:Int, sum:Bool)
 }
 
 class BasketVC: UIViewController , SendQuantityProtocol {
-  
+    let spinner = JGProgressHUD(style: .light)
     var basProduct : [product] = []
-   
+   var finalTotal = 0
     @IBOutlet weak var totalOutlet: UILabel!
     @IBOutlet weak var btn: UIButton!
     @IBOutlet weak var tableViewOutlet: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         btn.layer.cornerRadius = btn.frame.width/17
         getbasketProduct()
      
@@ -30,7 +29,8 @@ class BasketVC: UIViewController , SendQuantityProtocol {
       var total = 0
         for product in basProduct {
             let price = product.price.replacingOccurrences(of: "$", with: " ")
-            total =  total + (price as NSString).integerValue
+            let q = (product.quantity! as NSString).integerValue
+            total +=  q * (price as NSString).integerValue
         }
         totalOutlet.text = "\(total) $"
     }
@@ -38,9 +38,8 @@ class BasketVC: UIViewController , SendQuantityProtocol {
         DatabaseManager.shared.getBasketProducts("Atheersalalha@hotmail.com") { [weak self] result in
             switch result {
             case .success(let products):
+                  self?.basProduct = products
                 DispatchQueue.main.async{
-                  
-                    self?.basProduct = products
                     self?.tableViewOutlet.reloadData()
                     self?.getTotal()
                 }
@@ -59,19 +58,26 @@ class BasketVC: UIViewController , SendQuantityProtocol {
         }else{
              newTotal = currentTotal - price
         }
-            totalOutlet.text = "\(newTotal)   $"
+            finalTotal = newTotal
+            totalOutlet.text = "\(newTotal)$"
             
     }
 }
     
     @IBAction func CheckOutBtnPressed(_ sender: UIButton) {
+        spinner.show(in:view)
         if !basProduct.isEmpty {
+            
         let orderVC = storyboard?.instantiateViewController(withIdentifier: "OrderVC") as! OrderVC
         orderVC.orderItems = basProduct
         orderVC.total = totalOutlet.text
         orderVC.modalPresentationStyle = .fullScreen
-        present(orderVC, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                self.spinner.dismiss()
+                self.present(orderVC, animated: true, completion: nil)
+            }
         }
+        
     }
     
 }
@@ -91,6 +97,7 @@ extension BasketVC : UITableViewDataSource, UITableViewDelegate{
         cell.id = basProduct[indexPath.row].id
         cell.price = basProduct[indexPath.row].price
         cell.delegate = self
+        cell.stepperOutlet.value = Double(Int(String(basProduct[indexPath.row].quantity!))!)
       return cell
         
     }
@@ -98,7 +105,7 @@ extension BasketVC : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let id = basProduct[indexPath.row].id
         basProduct.remove(at: indexPath.row)
-        
+        tableView.reloadData()
      
         DatabaseManager.shared.deleteProduct(id:id, "basket") { success in
 

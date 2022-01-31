@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 class ProductDetails: UIViewController {
 
+    @IBOutlet weak var FavBtn: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var btn: UIButton!
@@ -69,7 +70,7 @@ class ProductDetails: UIViewController {
         // get email from sign in and signup -safe email before add to db-userdef
         
         // get product obj sent 2 to database add to fav
-      
+        FavBtn.tintColor = .red
         DatabaseManager.shared.addToFavourites(product!, "Atheersalalha@hotmail.com") { success in
             
             if success {

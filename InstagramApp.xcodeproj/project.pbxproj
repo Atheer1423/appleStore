@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		410E096A27A74FAD002EF1BE /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 410E096927A74FAD002EF1BE /* JGProgressHUD */; };
 		413F524F27A377A8009477DA /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 413F524E27A377A8009477DA /* SearchCell.swift */; };
 		4171B96627A189710017CF7D /* OrderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4171B96527A189700017CF7D /* OrderVC.swift */; };
 		4171B96827A189920017CF7D /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4171B96727A189920017CF7D /* OrderCell.swift */; };
@@ -62,6 +63,7 @@
 				C3B61F0D279B04C8008FE11A /* FirebaseStorage in Frameworks */,
 				C3B61F07279B04C8008FE11A /* FirebaseAnalytics in Frameworks */,
 				C3B61F09279B04C8008FE11A /* FirebaseAuth in Frameworks */,
+				410E096A27A74FAD002EF1BE /* JGProgressHUD in Frameworks */,
 				C3B61F12279B1B6A008FE11A /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +134,7 @@
 				C3B61F0A279B04C8008FE11A /* FirebaseDatabase */,
 				C3B61F0C279B04C8008FE11A /* FirebaseStorage */,
 				C3B61F11279B1B6A008FE11A /* Kingfisher */,
+				410E096927A74FAD002EF1BE /* JGProgressHUD */,
 			);
 			productName = InstagramApp;
 			productReference = C3B61EEE279AF881008FE11A /* InstagramApp.app */;
@@ -164,6 +167,7 @@
 			packageReferences = (
 				C3B61F05279B04C8008FE11A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				C3B61F10279B1B6A008FE11A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				410E096827A74FAD002EF1BE /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = C3B61EEF279AF881008FE11A /* Products */;
 			projectDirPath = "";
@@ -425,6 +429,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		410E096827A74FAD002EF1BE /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		C3B61F05279B04C8008FE11A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "http://github.com/firebase/firebase-ios-sdk";
@@ -444,6 +456,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		410E096927A74FAD002EF1BE /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 410E096827A74FAD002EF1BE /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
 		C3B61F06279B04C8008FE11A /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C3B61F05279B04C8008FE11A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

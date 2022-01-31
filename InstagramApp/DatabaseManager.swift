@@ -54,21 +54,28 @@ extension DatabaseManager {
     public func getFavouritesProducts(_ email:String, completion: @escaping (Result<[product],Error>) -> Void) {
         let SafeEmail = safeEmail(email: email)
         database.child("\(SafeEmail)/Fav").observe(.value) { snapshot in
+      
             guard let value = snapshot.value as? [[String:Any]] else {
                 completion(.failure(DatabaseError.failedToFetch))
                 return
+           
             }
-            let productsFav : [product] =  value.compactMap({ productDic in
+            let productsbas : [product] =  value.compactMap({ productDic in
                guard let name = productDic["name"] as? String ,
                    let price = productDic["price"] as? String ,
                    let color = productDic["color"] as? String ,
                     let id = productDic["id"] as? String ,
-                   let imageUrl = productDic["imageUrl"] as? String else {
+                   let imageUrl = productDic["imageUrl"] as? String,
+                     let quantity = productDic["quantity"] as? String
+                else {
+                 
                    return nil
                }
-                return product(image: imageUrl, name: name, color: color, price: price , id: id)
+             
+                return product(image: imageUrl, name: name, color: color, price: price , id: id, quantity:quantity)
             })
-            completion(.success(productsFav))
+            print(productsbas)
+            completion(.success(productsbas))
         }
         
         
@@ -167,7 +174,8 @@ extension DatabaseManager {
                     "price" : product.price,
                     "imageUrl" : product.image,
                     "color" : product.color,
-                    "id" : product.id
+                    "id" : product.id,
+                    "quantity" : "1"
                 ]
                 value.append(newProduct)
                 self?.database.child("\(SafeEmail)/Fav").setValue(value, withCompletionBlock: { error, _ in
@@ -190,7 +198,8 @@ extension DatabaseManager {
                     "price" : product.price,
                     "imageUrl" : product.image,
                     "color" : product.color,
-                    "id" : product.id
+                    "id" : product.id,
+                    "quantity" : "1"
                 ]
                 ]
                 self?.database.child("\(SafeEmail)/Fav").setValue(newProduct, withCompletionBlock: { error, _ in
@@ -245,8 +254,6 @@ extension DatabaseManager {
 //                        }
 //                        v4 = value3
 //                    })
-        print(v4)
-             print( v2)
         if let V = v1 ,  let Vt = v2 ,let Vth = v3, let Vf = v4 {
               completion(V,Vt,Vth,Vf)
         }
@@ -306,7 +313,7 @@ extension DatabaseManager {
                 if  productId == id {
                     let updatedProduct = [
                     "name" : dic["name"] as? String ,
-                    "price" : price ,
+                    "price" : dic["price"] ,
                     "color" : dic["color"] as? String ,
                     "id" : dic["id"] as? String ,
                     "imageUrl" : dic["imageUrl"] as? String ,

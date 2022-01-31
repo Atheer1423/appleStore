@@ -7,8 +7,11 @@
 
 import UIKit
 import Kingfisher
+import JGProgressHUD
 class ViewController: UIViewController {
-
+     let spinner = JGProgressHUD(style: .light)
+    
+    
     @IBOutlet weak var topLabel2: UILabel!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var noResultsLabel: UILabel!
@@ -36,6 +39,8 @@ class ViewController: UIViewController {
 //        layout.minimumInteritemSpacing = 5
 //        layout.itemSize = CGSize(width:( collectionOutlet.frame.size.width - 20)/2, height: collectionOutlet.frame.size.height / 3)
         fetchData()
+        spinner.textLabel.text = "Loading"
+        
         searchBar.delegate = self
         SearchTableView.isHidden = true
        
@@ -118,8 +123,10 @@ class ViewController: UIViewController {
         DatabaseManager.shared.getProducts(type: "laptop") { [weak self] result in
             switch result{
             case .success(let Products):
-                DispatchQueue.main.async{
                 self?.products = Products
+                DispatchQueue.main.async
+                {
+               
                 self?.collectionOutlet.reloadData()
                 }
             case .failure(let error):
@@ -147,15 +154,17 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell" , for: indexPath) as! CollectionViewCell
        
         let product = products[indexPath.row]
+       
         cell.deviceImage.kf.setImage(with: URL(string: product.image))
+       
         cell.view.layer.cornerRadius = cell.view.frame.width/14
 
         cell.view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner , .layerMaxXMaxYCorner,.layerMinXMaxYCorner]
         cell.phoneName.text = product.name
         cell.phonePrice.text = product.price
         let image = cell.deviceImage.image// your image
-        
-        if var name =  cell.phoneName.text {
+        //
+        if let name =  cell.phoneName.text {
         if ((name.contains("iPhone")) ){
             print("tru")
             UIGraphicsBeginImageContext(CGSize(width: 130, height: 80
@@ -166,6 +175,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
              cell.deviceImage.image = scaleImage
         }
         }
+        
        
        UIGraphicsBeginImageContext(CGSize(width: 130, height: 140
                                          ))
@@ -196,9 +206,9 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 extension ViewController : UISearchBarDelegate {
   
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-  
-//        topLabel.isHidden = false
-//       topLabel2.isHidden = false
+        
+        topLabel.isHidden = false
+       topLabel2.isHidden = false
        categoryStack.isHidden = false
        SearchTableView.isHidden = true
       collectionOutlet.isHidden = false
@@ -206,6 +216,7 @@ extension ViewController : UISearchBarDelegate {
         searchBar.showsCancelButton = false
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        spinner.show(in:view)
         searchBar.showsCancelButton = true
         print("in search tab")
         SearchTableView.isHidden = false
@@ -220,7 +231,8 @@ extension ViewController : UISearchBarDelegate {
     
         func searchProduct(query:String){
             var produ : [product] = []
-            var category = ["phones","Tablets","Wearables","laptop"]
+            //
+            let category = ["phones","Tablets","Wearables","laptop"]
             for num in 0...3 {
                 
             DatabaseManager.shared.getProducts(type: category[num]) {result in
@@ -244,17 +256,18 @@ extension ViewController : UISearchBarDelegate {
                     index = index + 1
                 }
                 DispatchQueue.main.async{
+                    self.spinner.dismiss()
                  self.SearchTableView.reloadData()
                     if self.SearchProducts.isEmpty {
-//                        self.topLabel.isHidden = true
-//                        self.topLabel2.isHidden = true
+                        self.topLabel.isHidden = true
+                        self.topLabel2.isHidden = true
                         self.categoryStack.isHidden = true
                         self.SearchTableView.isHidden = true
                         self.collectionOutlet.isHidden = true
                         self.noResultsLabel.isHidden = false
                     }else{
-//                        self.topLabel.isHidden = true
-//                        self.topLabel2.isHidden = true
+                        self.topLabel.isHidden = true
+                        self.topLabel2.isHidden = true
                         self.categoryStack.isHidden = true
                         self.SearchTableView.isHidden = false
                         self.collectionOutlet.isHidden = true
