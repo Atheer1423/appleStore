@@ -38,7 +38,7 @@ class FavouritesVC : UIViewController {
     func getFavourites(){
        
         DatabaseManager.shared.getFavouritesProducts("Atheersalalha@hotmail.com"){ [weak self] results in
-           print("in get")
+           
             switch results {
             case .success(let products):
                 self?.favProducts = products

@@ -36,7 +36,7 @@
 		413F524E27A377A8009477DA /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		4171B96527A189700017CF7D /* OrderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVC.swift; sourceTree = "<group>"; };
 		4171B96727A189920017CF7D /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
-		C3B61EEE279AF881008FE11A /* InstagramApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3B61EEE279AF881008FE11A /* AppleStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B61EF1279AF881008FE11A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3B61EF3279AF881008FE11A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C3B61EF5279AF881008FE11A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		C3B61EE5279AF881008FE11A = {
 			isa = PBXGroup;
 			children = (
-				C3B61EF0279AF881008FE11A /* InstagramApp */,
+				C3B61EF0279AF881008FE11A /* AppleStore */,
 				C3B61EEF279AF881008FE11A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,12 +82,12 @@
 		C3B61EEF279AF881008FE11A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C3B61EEE279AF881008FE11A /* InstagramApp.app */,
+				C3B61EEE279AF881008FE11A /* AppleStore.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C3B61EF0279AF881008FE11A /* InstagramApp */ = {
+		C3B61EF0279AF881008FE11A /* AppleStore */ = {
 			isa = PBXGroup;
 			children = (
 				C3B61EF1279AF881008FE11A /* AppDelegate.swift */,
@@ -109,15 +109,15 @@
 				C3B61F1B279B2EDD008FE11A /* GoogleService-Info.plist */,
 				C3B61EFF279AF882008FE11A /* Info.plist */,
 			);
-			path = InstagramApp;
+			path = AppleStore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C3B61EED279AF881008FE11A /* InstagramApp */ = {
+		C3B61EED279AF881008FE11A /* AppleStore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C3B61F02279AF882008FE11A /* Build configuration list for PBXNativeTarget "InstagramApp" */;
+			buildConfigurationList = C3B61F02279AF882008FE11A /* Build configuration list for PBXNativeTarget "AppleStore" */;
 			buildPhases = (
 				C3B61EEA279AF881008FE11A /* Sources */,
 				C3B61EEB279AF881008FE11A /* Frameworks */,
@@ -127,7 +127,7 @@
 			);
 			dependencies = (
 			);
-			name = InstagramApp;
+			name = AppleStore;
 			packageProductDependencies = (
 				C3B61F06279B04C8008FE11A /* FirebaseAnalytics */,
 				C3B61F08279B04C8008FE11A /* FirebaseAuth */,
@@ -137,7 +137,7 @@
 				410E096927A74FAD002EF1BE /* JGProgressHUD */,
 			);
 			productName = InstagramApp;
-			productReference = C3B61EEE279AF881008FE11A /* InstagramApp.app */;
+			productReference = C3B61EEE279AF881008FE11A /* AppleStore.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -155,7 +155,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C3B61EE9279AF881008FE11A /* Build configuration list for PBXProject "InstagramApp" */;
+			buildConfigurationList = C3B61EE9279AF881008FE11A /* Build configuration list for PBXProject "AppleStore" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -173,7 +173,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C3B61EED279AF881008FE11A /* InstagramApp */,
+				C3B61EED279AF881008FE11A /* AppleStore */,
 			);
 		};
 /* End PBXProject section */
@@ -358,8 +358,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8846GLBKY3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = InstagramApp/Info.plist;
+				INFOPLIST_FILE = AppleStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -385,8 +386,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8846GLBKY3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = InstagramApp/Info.plist;
+				INFOPLIST_FILE = AppleStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -408,7 +410,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C3B61EE9279AF881008FE11A /* Build configuration list for PBXProject "InstagramApp" */ = {
+		C3B61EE9279AF881008FE11A /* Build configuration list for PBXProject "AppleStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3B61F00279AF882008FE11A /* Debug */,
@@ -417,7 +419,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C3B61F02279AF882008FE11A /* Build configuration list for PBXNativeTarget "InstagramApp" */ = {
+		C3B61F02279AF882008FE11A /* Build configuration list for PBXNativeTarget "AppleStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C3B61F03279AF882008FE11A /* Debug */,

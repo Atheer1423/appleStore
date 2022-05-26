@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 import JGProgressHUD
 class ViewController: UIViewController {
-     let spinner = JGProgressHUD(style: .light)
+     
     
     
     @IBOutlet weak var topLabel2: UILabel!
@@ -27,26 +27,27 @@ class ViewController: UIViewController {
     var products :[product] = []
     
     @IBOutlet weak var searchBar: UISearchBar!
-//    var Searchresults :[product] = []
+
   
     @IBOutlet weak var SearchTableView: UITableView!
     var hasFetched = false
     @IBOutlet weak var collectionOutlet: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        var layout = collectionOutlet.collectionViewLayout as! UICollectionViewFlowLayout
-//        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
-//        layout.minimumInteritemSpacing = 5
-//        layout.itemSize = CGSize(width:( collectionOutlet.frame.size.width - 20)/2, height: collectionOutlet.frame.size.height / 3)
         fetchData()
-        spinner.textLabel.text = "Loading"
-        
         searchBar.delegate = self
         SearchTableView.isHidden = true
        
-       
+
     }
     
+  
+    func holdRelease (){
+        TabBtn.titleLabel?.tintColor = .red
+    }
+    func HoldDown (){
+        TabBtn.titleLabel?.tintColor = .black
+    }
     func fetchData(){
       
         DatabaseManager.shared.getProducts(type: "Wearables") { [weak self] result in
@@ -64,8 +65,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func TabletsPressed(_ sender: UIButton) {
-        UserDefaults.standard.set("jfhgjfkdkskf", forKey: "email")
-        print( UserDefaults.standard.value(forKey: "email"))
+//        UserDefaults.standard.set("jfhgjfkdkskf", forKey: "email")
+//        print( UserDefaults.standard.value(forKey: "email"))
         products = []
         collectionOutlet.reloadData()
         DatabaseManager.shared.getProducts(type: "Tablets") { [weak self] result in
@@ -113,9 +114,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    func gett(){
-        
-    }
+   
     
     @IBAction func LabtopPressed(_ sender: UIButton) {
         products = []
@@ -156,17 +155,17 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let product = products[indexPath.row]
        
         cell.deviceImage.kf.setImage(with: URL(string: product.image))
-       
+      
         cell.view.layer.cornerRadius = cell.view.frame.width/14
 
         cell.view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner , .layerMaxXMaxYCorner,.layerMinXMaxYCorner]
         cell.phoneName.text = product.name
         cell.phonePrice.text = product.price
         let image = cell.deviceImage.image// your image
-        //
+       
         if let name =  cell.phoneName.text {
         if ((name.contains("iPhone")) ){
-            print("tru")
+           
             UIGraphicsBeginImageContext(CGSize(width: 130, height: 80
                                               ))
              image?.draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: 130, height: 80)))
@@ -216,7 +215,7 @@ extension ViewController : UISearchBarDelegate {
         searchBar.showsCancelButton = false
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        spinner.show(in:view)
+       
         searchBar.showsCancelButton = true
         print("in search tab")
         SearchTableView.isHidden = false
@@ -245,6 +244,8 @@ extension ViewController : UISearchBarDelegate {
                     print(error.localizedDescription)
                     return
             }
+               
+
             
                 
                 var index = 0
@@ -255,8 +256,8 @@ extension ViewController : UISearchBarDelegate {
                     }
                     index = index + 1
                 }
+
                 DispatchQueue.main.async{
-                    self.spinner.dismiss()
                  self.SearchTableView.reloadData()
                     if self.SearchProducts.isEmpty {
                         self.topLabel.isHidden = true
@@ -280,7 +281,7 @@ extension ViewController : UISearchBarDelegate {
 }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension ViewController: UITableViewDataSource ,UITableViewDelegate{
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         SearchProducts.count
