@@ -233,7 +233,7 @@ extension ViewController : UISearchBarDelegate {
             //
             let category = ["phones","Tablets","Wearables","laptop"]
             for num in 0...3 {
-                
+            
             DatabaseManager.shared.getProducts(type: category[num]) {result in
              
                 switch result {
